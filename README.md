@@ -1,5 +1,6 @@
 # dots i use
 made fully by me
+
 where to put them:
 #### ghostty/config
 just copy to ~/.config/ghostty/config
@@ -9,6 +10,7 @@ copy to ~/.config/niri/config.kdl
 ###### !! install ghostty, dolphin, emote, noctalia, optionally gpu-screen-recorder
 #### noctalia/palettes/theme.json
 copy into ~/.config/noctalia/palettes/theme.json
+
 then choose the theme in noctalia's settings
 #### rfetch/conf.jsonc (optional, configs dont change much)
 copy into ~/.config/rfetch/conf.jsonc
