@@ -1,0 +1,298 @@
+// █░░ ▄▀█ █░█ █▄░█ █▀▀ █░█
+// █▄▄ █▀█ █▄█ █░▀█ █▄▄ █▀█
+
+spawn-at-startup "awww-daemon" "--format" "argb"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "noctalia"
+
+environment {
+  GDK_BACKEND "wayland"
+  QT_QPA_PLATFORM "wayland;xcb"
+  SDL_VIDEODRIVER "wayland"
+  CLUTTER_BACKEND "wayland"
+
+  XDG_CURRENT_DESKTOP "niri"
+  XDG_SESSION_TYPE "wayland"
+  XDG_SESSION_DESKTOP "niri"
+
+
+  QT_AUTO_SCREEN_SCALE_FACTOR "1" 
+  QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+
+
+  MOZ_ENABLE_WAYLAND "1"
+  GDK_SCALE "1"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ru"
+            options "grp:alt_shift_toggle"
+        }
+        repeat-delay 600
+        repeat-rate 25
+        numlock
+    }
+
+    touchpad {
+        tap
+        dwt
+        drag true
+        scroll-method "two-finger"
+        accel-profile "flat"
+        accel-speed 1.0
+    }
+
+    mouse {
+        accel-speed 0.0
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+output "eDP-1" {
+    mode "1920x1080@180"
+    scale 1.0
+    position x=0 y=0
+    transform "normal"
+}
+
+layout {
+    background-color "transparent"
+    gaps 3
+    struts {
+        left 5
+        right 5
+        top 5
+        bottom 5
+    }
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    border {
+        width 5
+        active-gradient from="#ffffffff" to="#ccccccff" angle=45
+        inactive-gradient from="#1B1B29ff" to="#3A3A53ff" angle=45
+    }
+
+    focus-ring {
+        off
+    }
+}
+
+overview {
+  backdrop-color "#3E3A6B"
+}
+
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 20
+}
+
+clipboard {
+}
+binds {
+    Mod+Slash { show-hotkey-overlay; }
+
+    Mod+E { spawn "dolphin"; }
+
+    Mod+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+
+    Mod+O repeat=false { toggle-overview; }
+    Alt+F4 { close-window; }
+
+    Mod+Left     { focus-column-left; }
+    Mod+Down     { focus-window-or-workspace-down; }
+    Mod+UP       { focus-window-or-workspace-up; }
+    Mod+Right    { focus-column-right; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Period           { spawn "emote"; }
+
+    Mod+Shift+Down { move-window-to-workspace-down; }
+    Mod+Shift+Up   { move-window-to-workspace-up; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+R { spawn "ghostty" "--font-size=11"; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+W { maximize-column; }
+    Alt+Return { fullscreen-window; }
+
+    Mod+Alt+Left { set-column-width "-10%"; }
+    Mod+Alt+Right { set-column-width "+10%"; }
+
+    Mod+Alt+Down { set-window-height "-10%"; }
+    Mod+Alt+Up { set-window-height "+10%"; }
+
+    Print { screenshot-screen; }
+    Mod+P { screenshot; }
+
+    Mod+Escape { quit; }
+    Mod+F10 { spawn-sh "gsr-ui-cli toggle-record"; }
+    Mod+F9 { spawn-sh "gsr-ui-cli toggle-pause"; }
+    
+	Mod+Alt+F { toggle-window-floating; }
+}
+
+window-rule {
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+
+window-rule {
+  match app-id="firefox"
+  draw-border-with-background false
+  opacity 0.99
+}
+
+window-rule {
+  match title="About Mozilla Firefox" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="celluloid"
+  open-maximized true
+}
+
+window-rule {
+  match app-id="org.kde.dolphin"
+  opacity 0.90
+}
+
+
+window-rule {
+  match app-id="org.kde.dolphin" title="Choose Application — Dolphin"
+  default-column-width { fixed 450; }
+  default-window-height { fixed 500; }
+}
+
+window-rule {
+  match app-id="alacritty" is-focused=false
+  opacity 0.85
+}
+
+window-rule {
+  match app-id="alacritty" is-focused=true
+  opacity 0.95
+}
+
+window-rule {
+  match app-id="org.pulseaudio.pavucontrol" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="nm-applet" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="nm-connection-editor" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="imv" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="org.gnome.Evince"
+  open-maximized true
+}
+
+
+blur {
+    passes 1
+    offset 1.0
+}
+
+window-rule {
+    background-effect {
+        blur false
+    }
+}
+
+window-rule {
+    match app-id="(?i)ghostty"
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+
+
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+}
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@180.000"
+}
+
+
+layer-rule {
+  match namespace="notifications"
+  opacity 1.0
+}
+

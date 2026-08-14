@@ -1,0 +1,29 @@
+{
+    /*
+    rfetch v0.6.0 preset config file
+    rfetch was made by skerrixx on github
+    */
+    "show_beta": true,
+    "color_ascii": true,
+    
+    // Aligns main item titles to match the theme's core accent color
+    "color_infotext": "cyan",
+    
+    "info_style": "boxed",
+    
+    "hide_info": [
+        /* 
+        uncomment any string below to hide system metrics from the layout.
+        */
+        // "headers",
+        //"packages",
+        // "os",
+        // "kernel",
+        "uptime",
+        // "cpu",
+        // "gpu",
+        // "ram",
+        "disk",
+        "battery" // Hidden by default to match the clean desktop aesthetic
+    ]
+}
