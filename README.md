@@ -1,24 +1,23 @@
-# точка файлы на окно менеджер арка линукс скачать бесплатно
-мои дотфайлы на нири
-вот куда их совать:
+# dots i use
+made fully by me
+where to put them:
 #### ghostty/config
-просто запихнуть в ~/.config/ghostty/config
-###### !! нужен установленный шрифт AnnotationM Nerd Font
+just copy to ~/.config/ghostty/config
+###### !! you need to install the font AnnotationM Nerd Font
 #### niri/config.kdl
-скопировать в ~/.config/niri/config.kdl
-###### !! нужны установленные ghostty, dolphin, emote, noctalia, опционально gpu-screen-recorder
+copy to ~/.config/niri/config.kdl
+###### !! install ghostty, dolphin, emote, noctalia, optionally gpu-screen-recorder
 #### noctalia/palettes/theme.json
-скопировать в ~/.config/noctalia/palettes/theme.json
-выбрать тему в настройках нокталии
-#### rfetch/conf.jsonc
-скопировать в ~/.config/rfetch/conf.jsonc
-нужен скачанный рфетч, если с первого раза не понятно
-### основные кейбайнды
-буквы английские а не русские для особо умных, mod = клавиша винды(фууууу)
-- открыть файл менеджер: mod+e
-- открыть терминал: mod+r
-- открыть лаунчер: mod+d
-- сделать окно меньше/больше по горизонтали: mod+alt+left, mod+alt+right
-- то же самое, но по вертикали: mod+alt+down, mod+alt+up
-- передвинуть фокусировку между окнами/воркспейсами: mod+стрелки
-- остальное: идешь нахуй и читаешь конфиг.кдл
+copy into ~/.config/noctalia/palettes/theme.json
+then choose the theme in noctalia's settings
+#### rfetch/conf.jsonc (optional, configs dont change much)
+copy into ~/.config/rfetch/conf.jsonc
+### main keybinds
+- open a file manager: mod+e
+- open a terminal: mod+r
+- open noctalia launcher: mod+d
+- make window smaller/bigger horizontally: mod+alt+left, mod+alt+right
+- same thing vertically: mod+alt+down, mod+alt+up
+- move focus between windows/workspaces: mod+arrows
+- toggle window floating/tiling: mod+alt+f
+- feel free to change stuff you need
